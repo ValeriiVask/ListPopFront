@@ -63,10 +63,23 @@ public:
 	}
 
 	T popFront()
-	{
-		//TODO Implement the popFront method that removes(and returns) the first element in the list.
-		throw std::exception("Not implemented.");
-	}
+{
+	if (head == nullptr)
+		throw std::exception("List is empty.");
+
+	Node* tmp = head;
+	head = head->next;
+
+	if (head != nullptr)
+		head->prev = nullptr;
+	else
+		tail = nullptr;
+
+	T value = tmp->value;
+	delete tmp;
+	return value;
+	throw std::exception("Not Implemented.");
+}
 
 	T popBack()
 	{
